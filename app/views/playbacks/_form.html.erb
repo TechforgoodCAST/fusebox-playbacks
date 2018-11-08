@@ -1,0 +1,20 @@
+<%= simple_form_for playback do |f| %>
+  <%= f.input :organisation_name %>
+  <%= f.input :project_name %>
+  <%= f.input :author_name %>
+  <%= f.input :period %>
+  <%= f.input :logo_url %>
+  <%= f.input :description %>
+  <%= f.input :notes %>
+
+  <h3>Insights</h3>
+
+  <%= f.simple_fields_for :insights do |insight| %>
+    <%= render 'insight_fields', f: insight %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'add insight', f, :insights %>
+  </div>
+
+  <%= f.button :submit %>
+<% end %>

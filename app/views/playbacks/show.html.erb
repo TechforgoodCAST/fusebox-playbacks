@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Organisation Name:</strong>
+  <%= @playback.organisation_name %>
+</p>
+
+<%- @playback.insights.each do |insight| %>
+  <li><%= insight.name %></li>
+<% end %>
+
+<%= link_to 'Edit', edit_playback_path(@playback) %> |
+<%= link_to 'Back', playbacks_path %>
