@@ -1,21 +1,25 @@
-<%= f.association :section, collection: Section.all %>
-<%= f.input :name %>
-<%= f.input :certainty, collection: Insight::CERTAINTY %>
-<%= f.input :description %>
-<%= f.input :successes %>
-<%= f.input :improvements %>
-<%= f.input :learnings %>
-<%= f.input :notes %>
+<div class="nested-fields">
+  <%= f.association :section, collection: Section.all %>
+  <%= f.input :name %>
+  <%= f.input :certainty, collection: Insight::CERTAINTY %>
+  <%= f.input :description %>
+  <%= f.input :successes %>
+  <%= f.input :improvements %>
+  <%= f.input :learnings %>
+  <%= f.input :notes %>
 
-<hr/>
+  <hr>
 
-<%= f.simple_fields_for :steps do |step| %>
-  <%= render 'step_fields', f: step %>
-<% end %>
-<div class="links">
-  <%= link_to_add_association 'add step', f, :steps %>
+  <div id="steps">
+    <%= f.simple_fields_for :steps do |step| %>
+      <%= render 'step_fields', f: step %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add step', f, :steps %>
+    </div>
+  </div>
+
+  <%= link_to_remove_association 'remove insight', f %>
+
+  <hr>
 </div>
-
-<%= link_to_remove_association 'remove insight', f %>
-
-<hr/>

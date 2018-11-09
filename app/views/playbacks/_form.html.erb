@@ -9,11 +9,13 @@
 
   <h3>Insights</h3>
 
-  <%= f.simple_fields_for :insights do |insight| %>
-    <%= render 'insight_fields', f: insight %>
-  <% end %>
-  <div class="links">
-    <%= link_to_add_association 'add insight', f, :insights %>
+  <div id="insights">
+    <%= f.simple_fields_for :insights do |insight| %>
+      <%= render 'insight_fields', f: insight %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add insight', f, :insights %>
+    </div>
   </div>
 
   <%= f.button :submit %>

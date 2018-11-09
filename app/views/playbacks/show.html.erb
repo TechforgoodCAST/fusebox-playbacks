@@ -7,6 +7,9 @@
 
 <%- @playback.insights.each do |insight| %>
   <li><%= insight.name %></li>
+  <%- insight.steps.each do |step| %>
+    <li><%= step.name %></li>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_playback_path(@playback) %> |
