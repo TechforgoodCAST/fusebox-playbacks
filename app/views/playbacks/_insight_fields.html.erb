@@ -1,6 +1,5 @@
 <div class="nested-fields">
-  <%= f.association :section, collection: Section.all %>
-  <%= f.input :name %>
+  <%= f.input :name, label: 'Insight name' %>
   <%= f.input :certainty, collection: Insight::CERTAINTY %>
   <%= f.input :description %>
   <%= f.input :successes %>

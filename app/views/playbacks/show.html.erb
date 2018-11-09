@@ -9,10 +9,10 @@
 
   <%= notes(@playback.notes) %>
 
-  <%- @insights.keys.each do |section| %>
+  <%- @playback.sections.each do |section| %>
     <fieldset>
-      <legend align="center"><%= section %></legend>
-      <%= render('section', insights: @insights[section]) %>
+      <legend align="center"><%= section.name %></legend>
+      <%= render('section', insights: section.insights) %>
     </fieldset>
   <% end %>
 

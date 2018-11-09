@@ -1,0 +1,17 @@
+<div class="nested-fields">
+  <%= link_to_remove_association 'remove section', f %>
+
+  <%= f.input :name, label: 'Section name' %>
+  <%= f.input :description %>
+
+  <div id="insights">
+    <%= f.simple_fields_for :insights do |insight| %>
+      <%= render 'insight_fields', f: insight %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add insight', f, :insights %>
+    </div>
+  </div>
+
+  <hr>
+</div>

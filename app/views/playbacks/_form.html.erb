@@ -7,14 +7,12 @@
   <%= f.input :description %>
   <%= f.input :notes %>
 
-  <h3>Insights</h3>
-
-  <div id="insights">
-    <%= f.simple_fields_for :insights do |insight| %>
-      <%= render 'insight_fields', f: insight %>
+  <div id="sections">
+    <%= f.simple_fields_for :sections do |section| %>
+      <%= render 'section_fields', f: section %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association 'add insight', f, :insights %>
+      <%= link_to_add_association 'add section', f, :sections %>
     </div>
   </div>
 

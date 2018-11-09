@@ -24,10 +24,8 @@ ActiveRecord::Schema.define(version: 2018_11_08_102853) do
     t.text "learnings"
     t.text "notes"
     t.bigint "section_id"
-    t.bigint "playback_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["playback_id"], name: "index_insights_on_playback_id"
     t.index ["section_id"], name: "index_insights_on_section_id"
   end
 
@@ -46,8 +44,10 @@ ActiveRecord::Schema.define(version: 2018_11_08_102853) do
   create_table "sections", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.bigint "playback_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["playback_id"], name: "index_sections_on_playback_id"
   end
 
   create_table "steps", force: :cascade do |t|
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2018_11_08_102853) do
     t.index ["insight_id"], name: "index_steps_on_insight_id"
   end
 
-  add_foreign_key "insights", "playbacks"
   add_foreign_key "insights", "sections"
+  add_foreign_key "sections", "playbacks"
   add_foreign_key "steps", "insights"
 end

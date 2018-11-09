@@ -9,7 +9,6 @@ class CreateInsights < ActiveRecord::Migration[5.2]
       t.text :learnings
       t.text :notes
       t.references :section, foreign_key: true
-      t.references :playback, foreign_key: true
 
       t.timestamps
     end
