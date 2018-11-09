@@ -19,6 +19,12 @@ class PlaybacksController < ApplicationController
     end
   end
 
+  def show
+    @insights = @playback.insights.joins(:section)
+                         .select('insights.*, sections.name AS s_name')
+                         .group_by(&:s_name)
+  end
+
   def update
     if @playback.update(playback_params)
       redirect_to @playback, notice: 'Playback was successfully updated.'

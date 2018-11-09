@@ -13,4 +13,9 @@ class Insight < ApplicationRecord
 
   validates :name, :certainty, presence: true
   validates :certainty, inclusion: { in: CERTAINTY }
+
+  # TODO: test
+  def certainty_color
+    CERTAINTY.zip(%w[green yellow red]).to_h[certainty]
+  end
 end

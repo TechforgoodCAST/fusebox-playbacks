@@ -1,16 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="maxw1050 mx-auto px15">
 
-<p>
-  <strong>Organisation Name:</strong>
-  <%= @playback.organisation_name %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<%- @playback.insights.each do |insight| %>
-  <li><%= insight.name %></li>
-  <%- insight.steps.each do |step| %>
-    <li><%= step.name %></li>
+  <header class="flex flex-wrap">
+    <h3 class="flex-col1 mb30"><%= organisation(@playback) %></h3>
+    <h3 class="flex-col1 mb30 right-align"><%= context(@playback) %></h3>
+  </header>
+
+  <%= notes(@playback.notes) %>
+
+  <%- @insights.keys.each do |section| %>
+    <fieldset>
+      <legend align="center"><%= section %></legend>
+      <%= render('section', insights: @insights[section]) %>
+    </fieldset>
   <% end %>
-<% end %>
 
-<%= link_to 'Edit', edit_playback_path(@playback) %> |
-<%= link_to 'Back', playbacks_path %>
+  <%= link_to 'Edit', edit_playback_path(@playback) %> |
+  <%= link_to 'Back', playbacks_path %>
+
+</div>
