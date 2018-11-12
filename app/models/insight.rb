@@ -5,7 +5,7 @@ class Insight < ApplicationRecord
     "We don't know"
   ].freeze
 
-  belongs_to :section
+  belongs_to :section, touch: true
 
   has_many :steps, dependent: :destroy
   accepts_nested_attributes_for :steps, allow_destroy: true

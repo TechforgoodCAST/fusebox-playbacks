@@ -13,7 +13,7 @@
   </header>
 
   <div class="px15">
-    <div class="center fs14 mb60 notice"><%= f.input :notes %></div>
+    <div class="mb60 notice"><%= f.trix_editor :notes %></div>
 
     <div id="sections">
       <%= f.simple_fields_for :sections do |section| %>

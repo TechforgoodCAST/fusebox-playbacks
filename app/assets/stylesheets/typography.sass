@@ -1,6 +1,8 @@
 // Config
 // =========================================================================
 
+@import 'colors'
+
 $base-size: 16px !default
 
 $heading-family: 'Lucida Grande', Helvetica, sans-serif !default
@@ -23,6 +25,11 @@ input,
 select,
 textarea
   font-family: $body-family
+
+ol, ul
+  margin-left: 20px
+ul
+  list-style: disc
 
 // Type scale
 // =========================================================================
@@ -47,8 +54,14 @@ h1, h2, h3, .heading, .h1, .h2, .h3
 // Emphasis
 // =========================================================================
 
+blockquote
+  border-left: 4px solid $grey
+  padding-left: 10px
 .bold
   font-weight: $bold-weight
+pre
+  background: $light-grey
+  padding: 5px
 
 // Alignment
 // =========================================================================

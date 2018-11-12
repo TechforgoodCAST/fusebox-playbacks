@@ -14,7 +14,8 @@ class CreatePlaybackTest < ApplicationSystemTestCase
     select('We know')
 
     click_link('Add Step')
-    fill_in('Please describe the next step', with: 'Conduct 5 user interviews')
+
+    within('#steps') { find('.trix-content').set('Conduct 5 user interview') }
 
     click_button('Create Playback')
 

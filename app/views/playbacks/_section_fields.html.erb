@@ -3,10 +3,10 @@
     <legend align="center"><%= f.input :name, label: 'Section name' %></legend>
 
     <div class="section-description">
-      <div class="right-align">
+      <div class="right-align mb20">
         <%= link_to_remove_association 'Remove Section', f, class: 'btn purple' %>
       </div>
-      <%= f.input :description %>
+      <%= f.trix_editor :description, class: 'mb30' %>
     </div>
 
     <div id="insights">

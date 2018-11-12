@@ -4,31 +4,33 @@
     <%= link_to_remove_association 'Remove Insight', f, class: 'btn blue' %>
   </div>
 
-  <div class="center mb60">
-    <div class="tag mb20">
-      <%= f.input :name, label: 'Insight name' %>
-      <%= f.input :certainty, collection: Insight::CERTAINTY %>
+  <div class="mb60">
+    <div class="center mb30">
+      <div class="tag">
+        <%= f.input :name, label: 'Insight name' %>
+        <%= f.input :certainty, collection: Insight::CERTAINTY %>
+      </div>
     </div>
 
-    <%= f.input :description %>
+    <%= f.trix_editor :description %>
   </div>
 
   <div class="flex flex-wrap mb30">
     <div class="flex-col1 px15 mb30">
       <h3 class="bold center mb30">What's going well</h3>
-      <%= f.input :successes, label: false %>
+      <%= f.trix_editor :successes %>
     </div>
     <div class="flex-col1 px15 mb30">
       <h3 class="bold center mb30">What could be improved</h3>
-      <%= f.input :improvements, label: false %>
+      <%= f.trix_editor :improvements %>
     </div>
     <div class="flex-col1 px15 mb30">
       <h3 class="bold center mb30">What have we learned</h3>
-      <%= f.input :learnings, label: false %>
+      <%= f.trix_editor :learnings %>
     </div>
   </div>
 
-  <div class="center fs14 mb60 notice"><%= f.input :notes %></div>
+  <div class="mb60 notice"><%= f.trix_editor :notes %></div>
 
   <div id="steps">
 

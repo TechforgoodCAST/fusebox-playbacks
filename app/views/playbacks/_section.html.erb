@@ -4,21 +4,21 @@
 
     <div class="center mb60">
       <%= status(insight) %>
-      <p class="fs18"><%= insight.description %></p>
+      <p class="fs18"><%= raw insight.description %></p>
     </div>
 
     <div class="flex flex-wrap mb30">
       <div class="flex-col1 px15 mb30">
         <h3 class="bold center mb30">What's going well</h3>
-        <%= with_default(insight.successes) %>
+        <%= raw with_default(insight.successes) %>
       </div>
       <div class="flex-col1 px15 mb30">
         <h3 class="bold center mb30">What could be improved</h3>
-        <%= with_default(insight.improvements) %>
+        <%= raw with_default(insight.improvements) %>
       </div>
       <div class="flex-col1 px15 mb30">
         <h3 class="bold center mb30">What have we learned</h3>
-        <%= with_default(insight.learnings) %>
+        <%= raw with_default(insight.learnings) %>
       </div>
     </div>
 
@@ -33,7 +33,7 @@
       <%- insight.steps.each_with_index do |step, index| %>
         <div class="step fs18">
           <div class="index"><%= index + 1 %></div>
-          <div class="details"><%= step.name %></div>
+          <div class="details"><%= raw step.name %></div>
           <div class="action">?</div>
         </div>
       <% end %>
