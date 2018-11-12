@@ -16,7 +16,9 @@
     </fieldset>
   <% end %>
 
-  <%= link_to 'Edit', edit_playback_path(@playback) %> |
-  <%= link_to 'Back', playbacks_path %>
-
+  <div class="mb30">
+    <%= link_to 'Edit', edit_playback_path(@playback) %> |
+    <%= link_to 'Back', playbacks_path %> |
+    Last updated <%= time_ago_in_words(@playback.updated_at) %> ago
+  </div>
 </div>

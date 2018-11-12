@@ -1,17 +1,17 @@
 <div class="nested-fields">
   <%= link_to_remove_association 'remove section', f %>
+  <fieldset>
+    <legend align="center"><%= f.input :name, label: 'Section name' %></legend>
 
-  <%= f.input :name, label: 'Section name' %>
-  <%= f.input :description %>
+    <div class="section-description"><%= f.input :description %></div>
 
-  <div id="insights">
-    <%= f.simple_fields_for :insights do |insight| %>
-      <%= render 'insight_fields', f: insight %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add insight', f, :insights %>
+    <div id="insights">
+      <%= f.simple_fields_for :insights do |insight| %>
+        <%= render 'insight_fields', f: insight %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'add insight', f, :insights %>
+      </div>
     </div>
-  </div>
-
-  <hr>
+  </fieldset>
 </div>

@@ -10,6 +10,16 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
-    hints:
+    labels:
+      insights:
+        description: 'Insight description'
+      playback:
+        description: 'Project description'
+        period: 'Playback period'
+      sections:
+        description: 'Section description'
+      steps:
+        name: 'Please describe the next step'
+    placeholders:
       playback:
         period: 'e.g. last week, month, quarter or some other sigificant period'

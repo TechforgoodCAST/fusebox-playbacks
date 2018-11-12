@@ -34,7 +34,7 @@ module PlaybacksHelper
     def period(playback)
       return tag.span if playback.period.blank?
 
-      tag.span('Playback from ') + tag.strong(playback.period.downcase)
+      tag.span('Playback from ') + tag.strong(playback.period)
     end
 
     def title(playback)

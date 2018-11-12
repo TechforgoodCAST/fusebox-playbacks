@@ -14,7 +14,7 @@ class CreatePlaybackTest < ApplicationSystemTestCase
     select('We know')
 
     click_link('add step')
-    fill_in('Name', with: 'Conduct 5 user interviews')
+    fill_in('Please describe the next step', with: 'Conduct 5 user interviews')
 
     click_button('Create Playback')
 

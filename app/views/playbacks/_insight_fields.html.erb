@@ -1,15 +1,39 @@
-<div class="nested-fields">
-  <%= f.input :name, label: 'Insight name' %>
-  <%= f.input :certainty, collection: Insight::CERTAINTY %>
-  <%= f.input :description %>
-  <%= f.input :successes %>
-  <%= f.input :improvements %>
-  <%= f.input :learnings %>
-  <%= f.input :notes %>
+<section class="nested-fields insight">
 
-  <hr>
+  <%= link_to_remove_association 'remove insight', f %>
+
+  <div class="center mb60">
+    <div class="tag mb20">
+      <%= f.input :name, label: 'Insight name' %>
+      <%= f.input :certainty, collection: Insight::CERTAINTY %>
+    </div>
+
+    <%= f.input :description %>
+  </div>
+
+  <div class="flex flex-wrap mb30">
+    <div class="flex-col1 px15 mb30">
+      <h3 class="bold center mb30">What's going well</h3>
+      <%= f.input :successes, label: false %>
+    </div>
+    <div class="flex-col1 px15 mb30">
+      <h3 class="bold center mb30">What could be improved</h3>
+      <%= f.input :improvements, label: false %>
+    </div>
+    <div class="flex-col1 px15 mb30">
+      <h3 class="bold center mb30">What have we learned</h3>
+      <%= f.input :learnings, label: false %>
+    </div>
+  </div>
+
+  <div class="center fs14 mb60 notice"><%= f.input :notes %></div>
 
   <div id="steps">
+
+    <hr>
+
+    <h3 class="bold center my40">Next Steps</h3>
+
     <%= f.simple_fields_for :steps do |step| %>
       <%= render 'step_fields', f: step %>
     <% end %>
@@ -18,7 +42,4 @@
     </div>
   </div>
 
-  <%= link_to_remove_association 'remove insight', f %>
-
-  <hr>
-</div>
+</section>

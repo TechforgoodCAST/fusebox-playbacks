@@ -1,20 +1,29 @@
 <%= simple_form_for playback do |f| %>
-  <%= f.input :organisation_name %>
-  <%= f.input :project_name %>
-  <%= f.input :author_name %>
-  <%= f.input :period %>
-  <%= f.input :logo_url %>
-  <%= f.input :description %>
-  <%= f.input :notes %>
-
-  <div id="sections">
-    <%= f.simple_fields_for :sections do |section| %>
-      <%= render 'section_fields', f: section %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add section', f, :sections %>
+  <header class="flex flex-wrap">
+    <div class="flex-col1 mb30 px15">
+      <%= f.input :logo_url %>
+      <%= f.input :organisation_name %>
+      <%= f.input :project_name %>
+      <%= f.input :description %>
     </div>
-  </div>
+    <div class="flex-col1 mb30 px15">
+      <%= f.input :author_name %>
+      <%= f.input :period %>
+    </div>
+  </header>
 
-  <%= f.button :submit %>
+  <div class="px15">
+    <div class="center fs14 mb60 notice"><%= f.input :notes %></div>
+
+    <div id="sections">
+      <%= f.simple_fields_for :sections do |section| %>
+        <%= render 'section_fields', f: section %>
+      <% end %>
+      <div class="links">
+        <%= link_to_add_association 'add section', f, :sections %>
+      </div>
+    </div>
+
+    <%= f.button :submit %>
+  </div>
 <% end %>
