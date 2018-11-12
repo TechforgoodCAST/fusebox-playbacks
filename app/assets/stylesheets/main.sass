@@ -1,13 +1,15 @@
 // Config
 // =========================================================================
 
-$black: #000000
-$green: #9BFFB2
-$light-grey: #f2f2f2
-$red: #FFA39B
-$yellow: #F3FF9B
+@import 'colors'
 
 // =========================================================================
+
+a
+  color: $teal
+  text-decoration: none
+  &:hover
+    text-decoration: underline
 
 fieldset
   margin-bottom: 60px
@@ -83,3 +85,6 @@ table, th, td
     background: $red
   &.yellow
     background: $yellow
+
+.links
+  text-align: center

@@ -6,14 +6,14 @@ class CreatePlaybackTest < ApplicationSystemTestCase
 
     fill_in(:playback_organisation_name, with: 'ACME')
 
-    click_link('add section')
+    click_link('Add Section')
     fill_in('Section name', with: 'Discover')
 
-    click_link('add insight')
+    click_link('Add Insight')
     fill_in('Insight name', with: 'Problem')
     select('We know')
 
-    click_link('add step')
+    click_link('Add Step')
     fill_in('Please describe the next step', with: 'Conduct 5 user interviews')
 
     click_button('Create Playback')

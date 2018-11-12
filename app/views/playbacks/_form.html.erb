@@ -20,10 +20,12 @@
         <%= render 'section_fields', f: section %>
       <% end %>
       <div class="links">
-        <%= link_to_add_association 'add section', f, :sections %>
+        <%= link_to_add_association 'Add Section', f, :sections, class: 'btn purple' %>
       </div>
     </div>
 
-    <%= f.button :submit %>
+    <hr class="my40">
+
+    <%= f.button :submit, class: 'mb20' %>
   </div>
 <% end %>

@@ -1,6 +1,8 @@
-<section class="nested-fields insight">
+<section class="nested-fields insight border blue">
 
-  <%= link_to_remove_association 'remove insight', f %>
+  <div class="right-align">
+    <%= link_to_remove_association 'Remove Insight', f, class: 'btn blue' %>
+  </div>
 
   <div class="center mb60">
     <div class="tag mb20">
@@ -38,7 +40,7 @@
       <%= render 'step_fields', f: step %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association 'add step', f, :steps %>
+      <%= link_to_add_association 'Add Step', f, :steps, class: 'btn orange' %>
     </div>
   </div>
 

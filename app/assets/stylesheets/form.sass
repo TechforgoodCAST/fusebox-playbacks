@@ -1,11 +1,21 @@
 // Config
 // =========================================================================
 
-$grey: #cccccc
-$mid-grey: #666666
-$teal: #2daeb7
+@import 'colors'
 
 // =========================================================================
+
+.error
+  color: red
+  display: block
+  font-size: 14px
+  padding-top: 5px
+  font-weight: normal
+  &:first-letter
+    text-transform: capitalize
+
+.field_with_errors > .field
+  border-color: red
 
 .field
   border: 2px solid $grey
