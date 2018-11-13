@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   private
 
     def set_comment
-      @step = Step.find_by(id: params[:step_id])
+      @step = Step.find_by_hashid(params[:step_id])
       redirect_back(fallback_location: root_path) unless @step
     end
 
