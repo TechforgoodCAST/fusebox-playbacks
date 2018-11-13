@@ -65,5 +65,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'cocoon'
 gem 'devise'
 gem 'jquery-rails'
+gem 'rollbar'
 gem 'simple_form'
 gem 'trix-rails', require: 'trix'
