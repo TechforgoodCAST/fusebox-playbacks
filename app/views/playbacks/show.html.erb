@@ -7,7 +7,7 @@
     <h3 class="flex-col1 mb30 right-align"><%= context(@playback) %></h3>
   </header>
 
-  <%= raw notes(@playback.notes) %>
+  <%= notes(@playback.notes) %>
 
   <%- @playback.sections.each do |section| %>
     <fieldset>

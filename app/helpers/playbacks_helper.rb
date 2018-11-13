@@ -5,7 +5,7 @@ module PlaybacksHelper
   end
 
   def notes(str)
-    tag.p(str, class: 'center fs14 mb60 notice') if str.present?
+    tag.div(raw(str), class: 'center fs14 mb60 notice') if str.present?
   end
 
   def organisation(playback)
