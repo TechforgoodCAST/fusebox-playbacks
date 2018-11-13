@@ -43,7 +43,7 @@ class PlaybacksController < ApplicationController
     def playback_params
       params.require(:playback).permit(
         :organisation_name, :project_name, :author_name, :period, :logo_url,
-        :description, :notes,
+        :description, :notes, :source,
         sections_attributes: [
           :id, :name, :description, :_destroy,
           insights_attributes: [
