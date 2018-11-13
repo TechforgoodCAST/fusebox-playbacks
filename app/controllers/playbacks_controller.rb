@@ -48,7 +48,7 @@ class PlaybacksController < ApplicationController
           insights_attributes: [
             :id, :name, :section_id, :certainty, :description, :successes,
             :improvements, :learnings, :notes, :_destroy,
-            steps_attributes: %i[id name _destroy]
+            steps_attributes: %i[id name due_on _destroy]
           ]
         ]
       )

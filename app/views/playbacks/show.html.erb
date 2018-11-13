@@ -9,7 +9,7 @@
 
   <%= notes(@playback.notes) %>
 
-  <%- @playback.sections.each do |section| %>
+  <%- @playback.sections.order(:created_at).each do |section| %>
     <fieldset>
       <legend align="center"><%= section.name %></legend>
       <div class="center fs14 section-description">
