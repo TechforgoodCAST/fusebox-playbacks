@@ -1,8 +1,13 @@
 require 'application_system_test_case'
 
 class CreatePlaybackTest < ApplicationSystemTestCase
+  setup do
+    @user = create(:user)
+  end
+
   test 'create playback' do
     visit new_playback_path
+    sign_in
 
     fill_in(:playback_organisation_name, with: 'ACME')
 

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   resources :playbacks
   resources :steps, only: [] do
     resources :comments, only: %i[new create]
