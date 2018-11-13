@@ -12,6 +12,9 @@
   <%- @playback.sections.each do |section| %>
     <fieldset>
       <legend align="center"><%= section.name %></legend>
+      <div class="center fs14 section-description">
+        <%= raw section.description %>
+      </div>
       <%= render('section', insights: section.insights) %>
     </fieldset>
   <% end %>
