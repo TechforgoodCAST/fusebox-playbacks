@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
     @comment = @step.comments.new(comment_params)
 
     if @comment.save
+      CommentsMailer.new_comment(@comment).deliver_now
       redirect_to(
         playback_path(@step.playback, anchor: "step-#{@step.id}"),
         notice: 'Comment was successfully created.'
