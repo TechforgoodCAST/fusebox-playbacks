@@ -1,0 +1,40 @@
+<div class="maxw1050 mx-auto px15">
+  <div class="my40">
+    <%= link_to 'Back', playback_path(@step.playback, anchor: "step-#{@step.id}") %>
+    <h1 class="h2 bold mb20">Comment on...</h1>
+
+    <div class="step fs18">
+      <div class="index"></div>
+      <div class="details"><%= raw @step.name %></div>
+      <div class="action"></div>
+    </div>
+
+    <%= render '/comments/list', step: @step %>
+  </div>
+
+  <%= simple_form_for @comment, url: step_comments_path(@step) do |f| %>
+    <h3 class="bold mb20">Add comment</h3>
+
+    <%= f.hidden_field :done, value: params[:done] %>
+    <div class="mb20"><%= f.input :author %></div>
+
+    <div class="bold fs18 mb20">
+      <%- if params[:done] %>
+        Please describe the outcome of completing this step...
+      <% else %>
+        Please describe the support you need...
+      <% end %>
+    </div>
+
+    <%= f.trix_editor :body %>
+    <span class="error mb20">
+      <%= @comment.errors[:body][0] %>
+    </span>
+
+    <%- if params[:done] %>
+      <%= f.button :submit, 'Mark as done' %>
+    <% else %>
+      <%= f.button :submit, 'Comment' %>
+    <% end %>
+  <% end %>
+</div>

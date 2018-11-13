@@ -5,6 +5,7 @@
     <%= f.input :due_on, include_blank: true %>
   </div>
   <div class="action">
-    <%= link_to_remove_association 'Remove Step', f, class: 'btn orange' %>
+    <%= link_to_remove_association 'Remove Step', f, class: 'btn orange mb20' %>
+    <p class="center"><%= pluralize(f.object.comments.size, 'comment') %></p>
   </div>
 </div>

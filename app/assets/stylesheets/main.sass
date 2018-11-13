@@ -40,6 +40,17 @@ table, th, td
 trix-editor
   font-size: 15px
 
+.comment
+  margin: 0 20px
+  padding-top: 15px
+  .heading
+    color: $mid-grey
+    font-size: 14px
+    margin-bottom: 10px
+  .body
+    background: $light-grey
+    padding: 10px
+
 .insight
   border-bottom: solid 1px $black
   padding: 45px 80px
@@ -48,24 +59,31 @@ trix-editor
   @media screen and (max-width: 640px)
     padding: 18px 15px
 
-.section-description
-  padding: 10px 80px
-  @media screen and (max-width: 640px)
-    padding: 10px 15px
+#new_comment
+  // background: $light-grey
+  border: 1px solid $black
+  margin: 20px 0
+  padding: 20px
 
 .notice
   padding: 20px
   background: $light-grey
 
+.section-description
+  padding: 10px 80px
+  @media screen and (max-width: 640px)
+    padding: 10px 15px
+
 .step
   display: flex
-  margin-bottom: 20px
+  margin-bottom: 10px
   .action, .details
     padding: 20px
     @media screen and (max-width: 640px)
       padding: 15px
   .action
     border: 1px solid $black
+    font-size: 14px
   .details
     flex: 1
     border: 1px solid $black

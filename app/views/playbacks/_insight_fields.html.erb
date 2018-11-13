@@ -38,7 +38,7 @@
 
     <h3 class="bold center my40">Next Steps</h3>
 
-    <%= f.simple_fields_for :steps do |step| %>
+    <%= f.simple_fields_for :steps, f.object.steps.order(:created_at) do |step| %>
       <%= render 'step_fields', f: step %>
     <% end %>
     <div class="links">

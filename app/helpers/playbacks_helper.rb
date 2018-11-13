@@ -1,7 +1,15 @@
 # TODO: test
 module PlaybacksHelper
+  def comment_done_message(comment)
+    comment.done? ? 'marked as done' : 'commented'
+  end
+
   def context(playback)
     period(playback) + tag.br + author(playback)
+  end
+
+  def line_through(step)
+    step.completed_on? ? 'details line-through' : 'details'
   end
 
   def notes(str)

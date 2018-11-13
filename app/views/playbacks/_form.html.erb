@@ -16,7 +16,7 @@
     <div class="mb60 notice"><%= f.trix_editor :notes %></div>
 
     <div id="sections">
-      <%= f.simple_fields_for :sections do |section| %>
+      <%= f.simple_fields_for :sections, f.object.sections.order(:created_at) do |section| %>
         <%= render 'section_fields', f: section %>
       <% end %>
       <div class="links">

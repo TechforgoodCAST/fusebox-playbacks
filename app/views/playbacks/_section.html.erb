@@ -30,11 +30,25 @@
 
       <h3 class="bold center my40">Next Steps</h3>
 
-      <%- insight.steps.each_with_index do |step, index| %>
-        <div class="step fs18">
-          <div class="index"><%= index + 1 %></div>
-          <div class="details"><%= raw step.name %></div>
-          <div class="action">?</div>
+      <%- insight.steps.order(:created_at).each_with_index do |step, index| %>
+        <div class="mb20">
+          <div class="step fs18" id=<%= "step-#{step.id}" %> >
+            <div class="index"><%= index + 1 %></div>
+
+            <%= tag.div(raw(step.name), class: line_through(step)) %>
+
+            <div class="action">
+              <%- if step.completed_on? %>
+                <%= link_to 'Comment', new_step_comment_path(step) %>
+              <% else %>
+                <%= link_to 'Mark as done', new_step_comment_path(step, done: true) %>
+                <br>or
+                <%= link_to 'Get help', new_step_comment_path(step) %>
+              <% end %>
+            </div>
+          </div>
+
+          <%= render '/comments/list', step: step %>
         </div>
       <% end %>
 

@@ -1,0 +1,10 @@
+<%- step.comments.order(:created_at).each do |comment| %>
+  <div class="comment">
+    <div class="heading">
+      <strong><%= comment.author %></strong>
+      <%= comment_done_message(comment) %>
+      <%= time_ago_in_words(comment.updated_at) %> ago
+    </div>
+    <div class="body"><%= raw comment.body %></div>
+  </div>
+<% end %>

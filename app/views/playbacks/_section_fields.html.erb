@@ -10,7 +10,7 @@
     </div>
 
     <div id="insights">
-      <%= f.simple_fields_for :insights do |insight| %>
+      <%= f.simple_fields_for :insights, f.object.insights.order(:created_at) do |insight| %>
         <%= render 'insight_fields', f: insight %>
       <% end %>
       <div class="links my40">
