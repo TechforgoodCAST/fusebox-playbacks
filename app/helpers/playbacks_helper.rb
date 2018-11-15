@@ -27,7 +27,8 @@ module PlaybacksHelper
   end
 
   def status(insight)
-    str = "#{insight.name.titleize}: #{insight.certainty.titleize}"
+    str = insight.name.titleize
+    str << ": #{insight.certainty.titleize}" if insight.certainty.present?
     tag.div(str, class: 'tag mb20 ' + insight.certainty_color)
   end
 
