@@ -14,6 +14,7 @@ class Insight < ApplicationRecord
 
   validates :name, presence: true
   validates :certainty, inclusion: { in: CERTAINTY }
+  validates :include_retro, inclusion: { in: [true, false] }
 
   # TODO: test
   def certainty_color

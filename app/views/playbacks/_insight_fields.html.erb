@@ -15,7 +15,9 @@
     <%= f.trix_editor :description %>
   </div>
 
-  <div class="flex flex-wrap mb30">
+  <%= f.input :include_retro, input_html: { class: 'toggle mb30' } %>
+
+  <div class="flex flex-wrap mb30 hide">
     <div class="flex-col1 px15 mb30">
       <h3 class="bold center mb30">What's going well</h3>
       <%= f.trix_editor :successes %>

@@ -18,3 +18,18 @@
 //= require cocoon
 //= require trix
 //= require_tree .
+
+"use strict";
+
+document.addEventListener("turbolinks:load", function () {
+    $(".toggle:checked").closest(".input").next().removeClass("hide");
+
+    $("body").on("change", ".toggle", function () {
+        var questions = $(this).closest(".input").next();
+        if ($(this).is(":checked")) {
+            return questions.removeClass("hide");
+        } else {
+            return questions.addClass("hide");
+        }
+    });
+}, false);
