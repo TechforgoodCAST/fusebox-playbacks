@@ -1,4 +1,4 @@
-<%- insights&.each do |insight| %>
+<%- insights.order(:created_at).each do |insight| %>
 
   <section class="insight">
 
@@ -7,20 +7,22 @@
       <p class="fs18"><%= raw insight.description %></p>
     </div>
 
-    <div class="flex flex-wrap mb30">
-      <div class="flex-col1 px15 mb30">
-        <h3 class="bold center mb30">What's going well</h3>
-        <%= raw with_default(insight.successes) %>
+    <%- if insight.include_retro? %>
+      <div class="flex flex-wrap mb30">
+        <div class="flex-col1 px15 mb30">
+          <h3 class="bold center mb30">What's going well</h3>
+          <%= raw with_default(insight.successes) %>
+        </div>
+        <div class="flex-col1 px15 mb30">
+          <h3 class="bold center mb30">What could be improved</h3>
+          <%= raw with_default(insight.improvements) %>
+        </div>
+        <div class="flex-col1 px15 mb30">
+          <h3 class="bold center mb30">What have we learned</h3>
+          <%= raw with_default(insight.learnings) %>
+        </div>
       </div>
-      <div class="flex-col1 px15 mb30">
-        <h3 class="bold center mb30">What could be improved</h3>
-        <%= raw with_default(insight.improvements) %>
-      </div>
-      <div class="flex-col1 px15 mb30">
-        <h3 class="bold center mb30">What have we learned</h3>
-        <%= raw with_default(insight.learnings) %>
-      </div>
-    </div>
+    <% end %>
 
     <%= notes(insight.notes) %>
 

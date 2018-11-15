@@ -16,6 +16,7 @@ en:
     labels:
       insights:
         description: 'Insight description'
+        include_retro: 'Include retrospective questions?'
       playback:
         description: 'Project description'
         period: 'Playback period'

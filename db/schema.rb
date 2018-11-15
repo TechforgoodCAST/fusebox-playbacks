@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_155507) do
+ActiveRecord::Schema.define(version: 2018_11_15_131447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_155507) do
     t.bigint "section_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "include_retro"
     t.index ["section_id"], name: "index_insights_on_section_id"
   end
 
