@@ -1,4 +1,4 @@
-<%- insights&.each do |insight| %>
+<%- insights.order(:created_at).each do |insight| %>
 
   <section class="insight">
 
