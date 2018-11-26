@@ -11,8 +11,8 @@
   <%- @playback.sections.order(:created_at).each do |section| %>
     <fieldset>
       <legend align="center"><%= section.name %></legend>
-      <div class="center section-description">
-        <%= raw section.description %>
+      <div class="section-description">
+        <div class="center"><%= raw section.description %></div>
 
         <%- if section.confidence.present? %>
           <div class="confidence fs14">
@@ -21,6 +21,13 @@
             <span class="confidence-right-label">Extremely confident</span>
           </div>
         <% end %>
+
+        <div class="mb30">
+          <%= render '/comments/list', commentable: section %>
+        </div>
+        <div class="center">
+          <%= link_to 'Add comment', new_comment_path(section), class: 'btn' %>
+        </div>
       </div>
       <%= render('section', insights: section.insights) %>
     </fieldset>

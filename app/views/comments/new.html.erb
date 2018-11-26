@@ -1,22 +1,36 @@
 <div class="maxw1050 mx-auto px15">
   <div class="my40">
-    <%= link_to 'Back', playback_path(@step.playback, anchor: "step-#{@step.id}") %>
+    <%= link_to 'Back', playback_path(@commentable.playback, anchor: @commentable.anchor) %>
     <h1 class="h2 bold mb20">Comment on...</h1>
 
-    <div class="notice mb30">
-      <strong>Please note:</strong> Subject to availability, advisors aim to respond to support requests within 1-2 working days, and that messages posted here are public. If you have additional questions please contact <%= mail_to 'hello@wearecast.org.uk', 'hello@wearecast.org.uk'%>.
-    </div>
+    <%- if @commentable.class == Step %>
+      <div class="step fs18">
+        <div class="index"></div>
+        <div class="details"><%= raw @commentable.name %></div>
+        <div class="action"></div>
+      </div>
+    <% else %>
+      <fieldset>
+        <legend align="center"><%= @commentable.name %></legend>
 
-    <div class="step fs18">
-      <div class="index"></div>
-      <div class="details"><%= raw @step.name %></div>
-      <div class="action"></div>
-    </div>
+        <div class="center section-description">
+          <%= raw @commentable.description %>
 
-    <%= render '/comments/list', step: @step %>
+          <%- if @commentable.confidence.present? %>
+            <div class="confidence fs14">
+              <%= tag.div(class: 'confidence-indicator', style: "left: calc(#{@commentable.confidence}0% - 8px)") %>
+              <span class="confidence-left-label">Not at all confident</span>
+              <span class="confidence-right-label">Extremely confident</span>
+            </div>
+          <% end %>
+        </div>
+      </fieldset>
+    <% end %>
+
+    <%= render '/comments/list', commentable: @commentable %>
   </div>
 
-  <%= simple_form_for @comment, url: step_comments_path(@step) do |f| %>
+  <%= simple_form_for @comment, url: new_comment_path(@commentable) do |f| %>
     <h3 class="bold mb20">Add comment</h3>
 
     <%= f.hidden_field :done, value: params[:done] %>
@@ -41,4 +55,8 @@
       <%= f.button :submit, 'Comment' %>
     <% end %>
   <% end %>
+
+  <div class="notice mb30">
+    <strong>Please note:</strong> Subject to availability, advisors aim to respond to support requests within 1-2 working days, and that messages posted here are public. If you have additional questions please contact <%= mail_to 'hello@wearecast.org.uk', 'hello@wearecast.org.uk'%>.
+  </div>
 </div>

@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :playbacks
-  resources :steps, only: [] do
-    resources :comments, only: %i[new create]
-  end
-  get '/steps/:step_id/comments', to: 'comments#new'
+
+  get '/support/:commentable_id/comments', to: 'comments#new', as: 'new_comment'
+  post '/support/:commentable_id/comments', to: 'comments#create'
 
   root to: 'playbacks#index'
 end

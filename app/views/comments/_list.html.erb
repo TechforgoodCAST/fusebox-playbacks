@@ -1,4 +1,4 @@
-<%- step.comments.order(:created_at).each do |comment| %>
+<%- commentable.comments.order(:created_at).each do |comment| %>
   <div class="comment">
     <div class="heading">
       <strong><%= comment.author %></strong>

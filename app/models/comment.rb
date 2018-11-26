@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :step, touch: true
+  belongs_to :commentable, polymorphic: true, touch: true
 
   validates :author, :body, presence: true
 

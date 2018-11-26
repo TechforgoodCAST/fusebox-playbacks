@@ -1,11 +1,11 @@
 <h1><%= @comment.author %> <%= comment_done_message(@comment) %></h1>
 
 <h3 style="margin: 0;">Step</h3>
-<p style="margin: 5px 0 20px;"><%= raw @comment.step.name %></p>
+<p style="margin: 5px 0 20px;"><%= raw @comment.commentable.name %></p>
 
 <h3 style="margin: 0 0 5px;">Comment</h3>
 <div style="background: #f2f2f2; padding: 20px; margin-bottom: 20px;">
   <%= raw @comment.body %>
 </div>
 
-<h3><%= link_to 'Reply here', new_step_comment_url(@comment.step) %></h3>
+<h3><%= link_to 'Reply here', new_comment_url(@comment.commentable) %></h3>
