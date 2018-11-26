@@ -51,6 +51,26 @@ trix-editor
     background: $light-grey
     padding: 10px
 
+.confidence
+  background: $black
+  height: 2px
+  margin: 25px 0 45px
+  .confidence-indicator
+    background: $teal
+    border-radius: 50%
+    height: 16px
+    position: relative
+    top: -7px
+    width: 16px
+  .confidence-left-label, .confidence-right-label
+    font-weight: bold
+    @media screen and (max-width: 640px)
+      font-size: 12px
+  .confidence-left-label
+    float: left
+  .confidence-right-label
+    float: right
+
 .insight
   border-bottom: solid 1px $black
   padding: 45px 80px
@@ -60,7 +80,6 @@ trix-editor
     padding: 18px 15px
 
 #new_comment
-  // background: $light-grey
   border: 1px solid $black
   margin: 20px 0
   padding: 20px
@@ -70,9 +89,9 @@ trix-editor
   background: $light-grey
 
 .section-description
-  padding: 10px 80px
+  padding: 20px 80px 10px
   @media screen and (max-width: 640px)
-    padding: 10px 15px
+    padding: 15px 15px 10px
 
 .step
   display: flex

@@ -45,7 +45,7 @@ class PlaybacksController < ApplicationController
         :organisation_name, :project_name, :author_name, :period, :logo_url,
         :description, :notes, :source,
         sections_attributes: [
-          :id, :name, :description, :_destroy,
+          :id, :confidence, :name, :description, :_destroy,
           insights_attributes: [
             :id, :name, :section_id, :certainty, :description, :successes,
             :improvements, :learnings, :notes, :include_retro, :_destroy,

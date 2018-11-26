@@ -6,7 +6,8 @@
       <div class="right-align mb20">
         <%= link_to_remove_association 'Remove Section', f, class: 'btn purple' %>
       </div>
-      <%= f.trix_editor :description, class: 'mb30' %>
+      <%= f.trix_editor :description, class: 'mb20' %>
+      <%= f.input :confidence, collection: 0..10, label_method: ->(o) { confidence_label(o) } %>
     </div>
 
     <div id="insights">

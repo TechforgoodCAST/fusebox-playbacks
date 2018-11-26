@@ -34,23 +34,23 @@
 
       <%- insight.steps.order(:created_at).each_with_index do |step, index| %>
         <div class="mb20">
-          <div class="step fs18" id=<%= "step-#{step.id}" %> >
+          <div class="step fs18" id=<%= step.anchor %> >
             <div class="index"><%= index + 1 %></div>
 
             <%= tag.div(raw(step.name), class: line_through(step)) %>
 
             <div class="action">
               <%- if step.completed_on? %>
-                <%= link_to 'Comment', new_step_comment_path(step) %>
+                <%= link_to 'Comment', new_comment_path(step) %>
               <% else %>
-                <%= link_to 'Mark as done', new_step_comment_path(step, done: true) %>
+                <%= link_to 'Mark as done', new_comment_path(step, done: true) %>
                 <br>or
-                <%= link_to 'Get help', new_step_comment_path(step) %>
+                <%= link_to 'Get help', new_comment_path(step) %>
               <% end %>
             </div>
           </div>
 
-          <%= render '/comments/list', step: step %>
+          <%= render '/comments/list', commentable: step %>
         </div>
       <% end %>
 

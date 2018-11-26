@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_131447) do
+ActiveRecord::Schema.define(version: 2018_11_26_132555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "step_id"
+    t.bigint "commentable_id"
     t.string "author"
     t.text "body"
     t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["step_id"], name: "index_comments_on_step_id"
+    t.string "commentable_type"
+    t.index ["commentable_id"], name: "index_comments_on_commentable_id"
   end
 
   create_table "insights", force: :cascade do |t|
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 2018_11_15_131447) do
     t.bigint "playback_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "confidence"
     t.index ["playback_id"], name: "index_sections_on_playback_id"
   end
 
@@ -84,7 +86,7 @@ ActiveRecord::Schema.define(version: 2018_11_15_131447) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comments", "steps"
+  add_foreign_key "comments", "steps", column: "commentable_id"
   add_foreign_key "insights", "sections"
   add_foreign_key "sections", "playbacks"
   add_foreign_key "steps", "insights"
