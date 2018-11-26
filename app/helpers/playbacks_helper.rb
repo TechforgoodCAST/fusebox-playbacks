@@ -1,5 +1,12 @@
 # TODO: test
 module PlaybacksHelper
+  def confidence_label(value)
+    {
+      0 => '0 - Not at all confident',
+      10 => '10 - Extremely confident'
+    }[value] || value
+  end
+
   def comment_done_message(comment)
     comment.done? ? 'marked as done' : 'commented'
   end

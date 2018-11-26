@@ -11,8 +11,16 @@
   <%- @playback.sections.order(:created_at).each do |section| %>
     <fieldset>
       <legend align="center"><%= section.name %></legend>
-      <div class="center fs14 section-description">
+      <div class="center section-description">
         <%= raw section.description %>
+
+        <%- if section.confidence.present? %>
+          <div class="confidence fs14">
+            <%= tag.div(class: 'confidence-indicator', style: "left: calc(#{section.confidence}0% - 8px)") %>
+            <span class="confidence-left-label">Not at all confident</span>
+            <span class="confidence-right-label">Extremely confident</span>
+          </div>
+        <% end %>
       </div>
       <%= render('section', insights: section.insights) %>
     </fieldset>

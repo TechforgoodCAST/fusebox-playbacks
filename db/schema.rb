@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_15_131447) do
+ActiveRecord::Schema.define(version: 2018_11_26_124128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2018_11_15_131447) do
     t.bigint "playback_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "confidence"
     t.index ["playback_id"], name: "index_sections_on_playback_id"
   end
 
