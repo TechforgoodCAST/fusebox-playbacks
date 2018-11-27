@@ -31,7 +31,7 @@
   </div>
 
   <%= simple_form_for @comment, url: new_comment_path(@commentable) do |f| %>
-    <h3 class="bold mb20">Add comment</h3>
+    <h3 class="bold mb20">Ask for help</h3>
 
     <%= f.hidden_field :done, value: params[:done] %>
     <div class="mb20"><%= f.input :author %></div>

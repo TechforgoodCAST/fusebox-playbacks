@@ -26,7 +26,7 @@
           <%= render '/comments/list', commentable: section %>
         </div>
         <div class="center">
-          <%= link_to 'Add comment', new_comment_path(section), class: 'btn' %>
+          <%= link_to 'Ask for help', new_comment_path(section), class: 'btn' %>
         </div>
       </div>
       <%= render('section', insights: section.insights) %>
