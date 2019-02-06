@@ -6,6 +6,7 @@
       <tr>
         <th>Organisation Name</th>
         <th>No. of comments</th>
+        <th>Source</th>
         <th></th>
       </tr>
     </thead>
@@ -15,6 +16,7 @@
         <tr>
           <td><%= playback.organisation_name %> <small>by <%= playback.author_name %></small></td>
           <td><%= playback.comments_count %></td>
+          <td><%= playback.source %></td>
           <td><%= link_to 'View', playback %></td>
         </tr>
       <% end %>
