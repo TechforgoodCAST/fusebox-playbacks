@@ -1,6 +1,10 @@
 class PlaybacksController < ApplicationController
-  before_action :authenticate_user!, except: %[show]
+  before_action :authenticate_user!, except: %i[show pending]
   before_action :set_playback, only: %i[show edit update destroy]
+
+  def pending
+    @playbacks = Playback.where(comments_count: params[:comments] || 0)
+  end
 
   def index
     @playbacks = Playback.all
