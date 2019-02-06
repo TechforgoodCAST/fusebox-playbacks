@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@fusebox-playbacks.herokuapp.com'
+  default from: 'CAST <designhops@wearecast.org.uk>'
   layout 'mailer'
 end
