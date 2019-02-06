@@ -1,33 +1,30 @@
 class WebhookController < ApplicationController
 
-    skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
-    def new_response
+  def new_response
+    table_record = JSON.parse(request.body.read)
 
-        table_record = JSON.parse(request.body.read)
+    @playback = Playback.new(
+      organisation_name: table_record['org'],
+      author_name: table_record['name'],
+      email: table_record['email']
+    )
 
-        @playback = Playback.new
+    if @playback.save
+      table = Airrecord.table(
+        ENV['AIRTABLE_API_KEY'],
+        ENV['AIRTABLE_APP_KEY'],
+        'Attendee sign-up data'
+      )
 
-        @playback.organisation_name = table_record["org"]
-        @playback.author_name = table_record["name"]
-        @playback.email = table_record["email"]
+      @record = table.find(table_record['id'])
+      @record['playback'] = playback_url(@playback)
+      @record.save
 
-        # save playback and get link
-        if @playback.save
-
-            table = Airrecord.table("keyM4XBVfiFNw30XP", "appchfb5dUtfrlVSZ", "Attendee sign-up data")
-
-            # use https://github.com/joelcogen/airtable-rails to send newly created link back to airtable
-
-            @record = table.find(table_record["id"])
-            @record["playback"] = "https://fusebox-playbacks.herokuapp.com/playbacks/#{@playback.hashid}"
-            @record.save
-
-            head :ok
-
-        else
-            head :bad_request
-        end
-        
+      head :ok
+    else
+      head :bad_request
     end
+  end
 end

@@ -79,6 +79,7 @@ GEM
       railties (>= 4.1.0, < 6.0)
       responders
       warden (~> 1.2.3)
+    dotenv (2.6.0)
     erubi (1.7.1)
     execjs (2.7.0)
     factory_bot (4.11.1)
@@ -243,6 +244,7 @@ DEPENDENCIES
   chromedriver-helper
   cocoon
   devise
+  dotenv
   factory_bot_rails
   hashid-rails (~> 1.0)
   jbuilder (~> 2.5)

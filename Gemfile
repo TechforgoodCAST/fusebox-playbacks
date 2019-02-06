@@ -71,3 +71,4 @@ gem 'simple_form'
 gem 'trix-rails', require: 'trix'
 
 gem 'airrecord'
+gem 'dotenv'
