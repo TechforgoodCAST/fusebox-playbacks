@@ -11,14 +11,17 @@ class WebhookController < ApplicationController
       email: table_record['email']
     )
 
-    if @playback.save
-      table = Airrecord.table(
+    table = Airrecord.table(
         ENV['AIRTABLE_API_KEY'],
         ENV['AIRTABLE_APP_KEY'],
         'Attendee sign-up data'
-      )
+    )
+    
+    @record = table.find(table_record['id'])
 
-      @record = table.find(table_record['id'])
+
+    if @playback.save
+
       @record['playback'] = playback_url(@playback)
       @record.save
 
@@ -27,4 +30,5 @@ class WebhookController < ApplicationController
       head :bad_request
     end
   end
+
 end

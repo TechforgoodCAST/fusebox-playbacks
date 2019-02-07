@@ -5,28 +5,46 @@ class WebhooksTest < ApplicationSystemTestCase
   # playback not sucessfully created (e.g. missing org name)
   # playback not sucessfully created (e.g. no Airtable id)
 
-  test 'new playback created' do
-    assert_equal(Playback.count, 0)
-    send_fake_webhook_request
-    assert_equal(Playback.count, 1)
-  end
-
-  def send_fake_webhook_request
+  test 'playback successfully created with good info' do
     body = {
-      'id': 123,
+      'id': 'recEGwuM00enWF3NB',
       'org': 'ACME',
       'name': 'John',
       'email': 'john@email.com'
     }
 
-    fake_webhook_request(
-      webhooks_new_response_path('123'),
+    current_count = Playback.count
+
+    send_webhook_request(body, 'recEGwuM00enWF3NB')
+    assert_equal(Playback.count, current_count + 1)
+
+  end
+
+  test 'playback not successfully created with bad org name ' do
+    body = {
+      'id': 'recEGwuM00enWF3NB',
+      'org': '',
+      'name': 'John',
+      'email': 'john@email.com'
+    }
+
+    current_count = Playback.count
+
+    send_webhook_request(body, 'recEGwuM00enWF3NB')
+    assert_equal(Playback.count, current_count)
+
+  end
+
+  def send_webhook_request(body, path)
+    webhook_request(
+      webhooks_new_response_path(path),
       headers: { 'Content-Type' => 'application/json' },
       body: body
     )
   end
 
-  def fake_webhook_request(url, headers: {}, body: {})
+
+  def webhook_request(url, headers: {}, body: {})
     server = Capybara.current_session.server
     conn = Faraday.new(url: "http://#{server.host}:#{server.port}")
     conn.post do |req|
