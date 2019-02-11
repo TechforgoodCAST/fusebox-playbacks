@@ -5,32 +5,29 @@ class WebhooksTest < ApplicationSystemTestCase
   # playback not sucessfully created (e.g. missing org name)
   # playback not sucessfully created (e.g. no Airtable id)
 
-  test 'playback successfully created with good info' do
-    body = {
+  setup do
+    @body = {
       'id': 'recEGwuM00enWF3NB',
       'org': 'ACME',
       'name': 'John',
       'email': 'john@email.com'
     }
+  end
 
+  test 'playback successfully created with good info' do
     current_count = Playback.count
 
-    send_webhook_request(body, 'recEGwuM00enWF3NB')
+    send_webhook_request(@body, 'recEGwuM00enWF3NB')
     assert_equal(Playback.count, current_count + 1)
 
   end
 
   test 'playback not successfully created with bad org name ' do
-    body = {
-      'id': 'recEGwuM00enWF3NB',
-      'org': '',
-      'name': 'John',
-      'email': 'john@email.com'
-    }
+    @body['org'] = ''
 
     current_count = Playback.count
 
-    send_webhook_request(body, 'recEGwuM00enWF3NB')
+    send_webhook_request(@body, 'recEGwuM00enWF3NB')
     assert_equal(Playback.count, current_count)
 
   end

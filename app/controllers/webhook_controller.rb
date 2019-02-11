@@ -19,7 +19,6 @@ class WebhookController < ApplicationController
     
     @record = table.find(table_record['id'])
 
-
     if @playback.save
 
       @record['playback'] = playback_url(@playback)
