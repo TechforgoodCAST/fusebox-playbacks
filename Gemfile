@@ -69,3 +69,6 @@ gem 'jquery-rails'
 gem 'rollbar'
 gem 'simple_form'
 gem 'trix-rails', require: 'trix'
+
+gem 'airrecord'
+gem 'dotenv-rails', :groups => [:development, :test]
