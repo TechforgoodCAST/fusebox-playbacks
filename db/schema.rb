@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_02_04_161239) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -53,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_02_04_161239) do
     t.datetime "updated_at", null: false
     t.string "source"
     t.string "email"
+
+    t.integer "comments_count", default: 0, null: false
   end
 
   create_table "sections", force: :cascade do |t|

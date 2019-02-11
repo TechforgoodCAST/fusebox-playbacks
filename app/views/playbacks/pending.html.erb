@@ -1,0 +1,25 @@
+<div class="maxw1050 mx-auto px15">
+  <h1 class="h2 bold my40">Pending Playbacks</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Organisation Name</th>
+        <th>No. of comments</th>
+        <th>Source</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @playbacks.each do |playback| %>
+        <tr>
+          <td><%= playback.organisation_name %> <small>by <%= playback.author_name %></small></td>
+          <td><%= playback.comments_count %></td>
+          <td><%= playback.source %></td>
+          <td><%= link_to 'View', playback %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
