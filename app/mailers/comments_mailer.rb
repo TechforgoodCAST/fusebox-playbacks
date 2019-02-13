@@ -6,6 +6,6 @@ class CommentsMailer < ApplicationMailer
     @playback = playback
 
     subject = "New comment from #{@comment.author}"
-    mail(to: @playback.email, bcc: 'hello@wearecast.org.uk', subject: subject)
+    mail(to: @playback.email, bcc: 'designhops@wearecast.org.uk', subject: subject)
   end
 end
