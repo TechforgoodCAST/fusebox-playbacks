@@ -6,6 +6,12 @@ class CommentsMailerPreview < ActionMailer::Preview
       body: '<div>Is <a href="#">this</a> a good resource</div>',
       commentable: Step.new(id: 1, name: 'State your problem')
     )
-    CommentsMailer.new_comment(comment)
+
+    playback = Playback.new(
+      organisation_name: 'Organisation',
+      project_name: 'Project',
+      email: 'ian@wearecast.org.uk'
+    )
+    CommentsMailer.new_comment(comment, playback)
   end
 end
