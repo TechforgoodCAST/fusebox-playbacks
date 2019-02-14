@@ -1,9 +1,6 @@
 require 'application_system_test_case'
 
 class WebhooksTest < ApplicationSystemTestCase
-  # playback sucessfully created
-  # playback not sucessfully created (e.g. missing org name)
-  # playback not sucessfully created (e.g. no Airtable id)
 
   setup do
     @body = {

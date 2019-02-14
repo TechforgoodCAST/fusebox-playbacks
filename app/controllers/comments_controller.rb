@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
 
     if @comment.save
-      CommentsMailer.new_comment(@comment).deliver_now
+      CommentsMailer.new_comment(@comment, @commentable.playback).deliver_now
       redirect_to(
         playback_path(@commentable.playback, anchor: @commentable.anchor),
         notice: 'Comment was successfully created.'
