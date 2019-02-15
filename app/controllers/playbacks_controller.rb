@@ -3,7 +3,9 @@ class PlaybacksController < ApplicationController
   before_action :set_playback, only: %i[show edit update destroy]
 
   def pending
-    @playbacks = Playback.where(comments_count: params[:comments] || 0)
+    @playbacks = Playback.query(:comments_count, params[:comments])
+                         .query(:source, params[:source])
+                         .order(:source, :comments_count)
   end
 
   def index
@@ -46,7 +48,7 @@ class PlaybacksController < ApplicationController
 
     def playback_params
       params.require(:playback).permit(
-        :organisation_name, :project_name, :author_name, :period, :logo_url,
+        :organisation_name, :email, :project_name, :author_name, :period, :logo_url,
         :description, :notes, :source,
         sections_attributes: [
           :id, :confidence, :name, :description, :_destroy,
