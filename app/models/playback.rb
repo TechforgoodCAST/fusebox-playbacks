@@ -6,4 +6,8 @@ class Playback < ApplicationRecord
   validates_associated :sections
 
   validates :organisation_name, :email, presence: true
+
+  def self.query(col, param)
+    param.blank? ? all : where(col => param)
+  end
 end
