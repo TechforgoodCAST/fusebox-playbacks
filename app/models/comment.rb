@@ -8,7 +8,6 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true, touch: true
 
   validates :author, :body, presence: true
-  validates :helpful, inclusion: { in: HELPFUL }
 
   before_validation :mark_step_as_done!
   after_create :update_comments_count!

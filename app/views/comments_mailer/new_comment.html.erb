@@ -12,9 +12,9 @@
 
 <div style="margin-bottom: 20px;">
   <p style="margin: 5px 0 20px; display: inline;">Was this helpful?</p>
-  <%= link_to 'Yes', get_helpful_url(@comment.commentable, Comment::HELPFUL['Yes']) %> |
-  <%= link_to 'No', get_helpful_url(@comment.commentable, Comment::HELPFUL['No']) %> |
-  <%= link_to 'Kind of', get_helpful_url(@comment.commentable, Comment::HELPFUL['Kind of']) %>
+  <%= link_to 'Yes', set_helpful_url(@comment.commentable, @comment.id, Comment::HELPFUL['Yes']) %> |
+  <%= link_to 'No', set_helpful_url(@comment.commentable, @comment.id, Comment::HELPFUL['No']) %> |
+  <%= link_to 'Kind of', set_helpful_url(@comment.commentable, @comment.id, Comment::HELPFUL['Kind of']) %>
 </div>
 
 <small>This is an automated email for your records.</small>

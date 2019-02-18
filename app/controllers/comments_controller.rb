@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
       if user_signed_in?
         CommentsMailer.new_comment(@comment, @commentable.playback).deliver_now
       end
-      
+
       redirect_to(
         playback_path(@commentable.playback, anchor: @commentable.anchor),
         notice: 'Comment was successfully created.'
@@ -20,6 +20,18 @@ class CommentsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def set_helpful
+    @playback = Playback.find(params[:commentable_id])
+
+    @comment = Comment.find(params[:comment])
+    @comment.update(helpful: params[:help])
+
+    redirect_to(
+      playback_path(@playback),
+      notice: 'Thanks for your feedback!'
+    )
   end
 
   private

@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_144231) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "commentable_type"
-    t.integer "helpful"
+    t.integer "helpful", default: 0
     t.index ["commentable_id"], name: "index_comments_on_commentable_id"
   end
 
