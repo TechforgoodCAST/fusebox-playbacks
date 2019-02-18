@@ -9,7 +9,10 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
 
     if @comment.save
-      CommentsMailer.new_comment(@comment, @commentable.playback).deliver_now
+      if user_signed_in?
+        CommentsMailer.new_comment(@comment, @commentable.playback).deliver_now
+      end
+      
       redirect_to(
         playback_path(@commentable.playback, anchor: @commentable.anchor),
         notice: 'Comment was successfully created.'
