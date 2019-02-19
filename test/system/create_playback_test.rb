@@ -10,6 +10,7 @@ class CreatePlaybackTest < ApplicationSystemTestCase
     sign_in
 
     fill_in(:playback_organisation_name, with: 'ACME')
+    fill_in(:playback_email, with: 'test@wearecast.co.uk')
 
     click_link('Add Section')
     fill_in('Section name', with: 'Discover')

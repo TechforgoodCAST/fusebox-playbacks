@@ -2,6 +2,7 @@
 class CommentsMailerPreview < ActionMailer::Preview
   def new_comment
     comment = Comment.new(
+      id: 1,
       author: 'John Doe',
       body: '<div>Is <a href="#">this</a> a good resource</div>',
       commentable: Step.new(id: 1, name: 'State your problem')

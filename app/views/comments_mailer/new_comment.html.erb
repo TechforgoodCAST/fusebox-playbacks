@@ -10,4 +10,11 @@
 
 <h3><%= link_to 'Reply here', new_comment_url(@comment.commentable) %></h3>
 
+<div style="margin-bottom: 20px;">
+  <p style="margin: 5px 0 20px; display: inline;">Was this helpful?</p>
+  <%= link_to 'Yes', set_helpful_url(@comment.commentable, @comment.id, Comment::HELPFUL['Yes']) %> |
+  <%= link_to 'No', set_helpful_url(@comment.commentable, @comment.id, Comment::HELPFUL['No']) %> |
+  <%= link_to 'Kind of', set_helpful_url(@comment.commentable, @comment.id, Comment::HELPFUL['Kind of']) %>
+</div>
+
 <small>This is an automated email for your records.</small>
