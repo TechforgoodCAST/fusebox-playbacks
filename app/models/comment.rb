@@ -1,7 +1,14 @@
 class Comment < ApplicationRecord
+  HELPFUL = {
+    'No' => -1,
+    'Kind of' => 0,
+    'Yes' => 1
+  }.freeze
+
   belongs_to :commentable, polymorphic: true, touch: true
 
   validates :author, :body, presence: true
+  validates :helpful, inclusion: { in: HELPFUL }, on: :update
 
   before_validation :mark_step_as_done!
   after_create :update_comments_count!

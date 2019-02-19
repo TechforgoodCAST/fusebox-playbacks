@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   post '/webhook/new-response/:id', to: 'webhook#new_response', as: 'webhooks_new_response'
 
+  get '/support/:commentable_id/comments/:comment/:help', to: 'comments#set_helpful', as: 'set_helpful'
+
   root to: 'playbacks#index'
 end

@@ -1,5 +1,5 @@
 class PlaybacksController < ApplicationController
-  before_action :authenticate_user!, except: %i[show pending]
+  before_action :authenticate_user!, except: %i[show]
   before_action :set_playback, only: %i[show edit update destroy]
 
   def pending
