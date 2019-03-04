@@ -22,7 +22,7 @@ namespace :import do
           'What resources do you need and what do you need them for?' => [13, 14],
           'What will the impact be?' => [15, 16],
           'This would help me communicate my work today' => [17],
-          "This is the first thing I'm going to test" => [18]
+          'This would help me move forwards' => [18]
         }.each do |name, rows|
           playback.sections.create(
             name: name,
