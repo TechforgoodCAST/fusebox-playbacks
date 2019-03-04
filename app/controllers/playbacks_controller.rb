@@ -6,6 +6,11 @@ class PlaybacksController < ApplicationController
     @playbacks = Playback.query(:comments_count, params[:comments])
                          .query(:source, params[:source])
                          .order(:source, :comments_count)
+
+    @replies = Playback.where("comments_count > ?", 1)
+
+    @reply_stat = (@replies.size / @playbacks.size) * 100
+
   end
 
   def index
