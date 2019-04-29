@@ -1,11 +1,10 @@
 class CommentsMailer < ApplicationMailer
   helper :playbacks
 
-  def new_comment(comment, playback)
+  def new_comment(comment, playback, email = playback.email)
     @comment = comment
     @playback = playback
 
-    subject = "New comment from #{@comment.author}"
-    mail(to: @playback.email, bcc: 'designhops@wearecast.org.uk', subject: subject)
+    mail(to: email, subject: "New comment from #{@comment.author}")
   end
 end

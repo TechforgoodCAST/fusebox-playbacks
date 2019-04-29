@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post '/support/:commentable_id/comments', to: 'comments#create'
 
   post '/webhook/new-response/:id', to: 'webhook#new_response', as: 'webhooks_new_response'
+  get '/webhook/confirm', to: 'webhook#airtable_confirm', as: 'webhooks_airtable_confirm'
 
   get '/support/:commentable_id/comments/:comment/:help', to: 'comments#set_helpful', as: 'set_helpful'
 
