@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
     if @comment.save
       if user_signed_in?
         CommentsMailer.new_comment(@comment, @commentable.playback).deliver_now
+      else
+        CommentsMailer.new_comment(@comment, @commentable.playback, 'designhops@wearecast.org.uk').deliver_now
       end
 
       redirect_to(

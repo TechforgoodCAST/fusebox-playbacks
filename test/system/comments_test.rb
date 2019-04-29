@@ -6,9 +6,10 @@ class CommentsTest < ApplicationSystemTestCase
     @user = create(:user)
     @playback = create(:playback)
     @section = create(:section)
+    @deliveries = ActionMailer::Base.deliveries
   end
 
-  test 'send email when comment created if signed in' do 
+  test 'notify Playback#email when comment author signed in' do
     visit new_playback_path
     sign_in
 
@@ -27,11 +28,11 @@ class CommentsTest < ApplicationSystemTestCase
 
     click_on 'Comment'
 
-    assert(ActionMailer::Base.deliveries.count == 1)
-    
+    assert(@deliveries.size == 1)
+    assert_includes(@deliveries.last.to, 'test@wearecast.co.uk')
   end
 
-  test 'no email when comment created if not signed in' do
+  test 'notify CAST when comment author not signed in' do
     visit playback_path(@playback)
 
     click_on 'Ask for help'
@@ -41,8 +42,7 @@ class CommentsTest < ApplicationSystemTestCase
 
     click_on 'Comment'
 
-    assert(ActionMailer::Base.deliveries.count == 0)
-  end 
-
-  
+    assert(@deliveries.size == 1)
+    assert_includes(@deliveries.last.to, 'designhops@wearecast.org.uk')
+  end
 end
