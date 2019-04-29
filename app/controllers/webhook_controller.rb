@@ -1,6 +1,6 @@
 class WebhookController < ApplicationController
-
   skip_before_action :verify_authenticity_token
+  before_action :load_table
 
   def new_response
     table_record = JSON.parse(request.body.read)
@@ -11,13 +11,7 @@ class WebhookController < ApplicationController
       email: table_record['email']
     )
 
-    table = Airrecord.table(
-        ENV['AIRTABLE_API_KEY'],
-        ENV['AIRTABLE_APP_KEY'],
-        'Attendee sign-up data'
-    )
-    
-    @record = table.find(table_record['id'])
+    @record = @table.find(table_record['id'])
 
     if @playback.save
 
@@ -30,4 +24,28 @@ class WebhookController < ApplicationController
     end
   end
 
+  def airtable_confirm
+    record = @table.all(filter: "{email} = '#{params[:email]}'")[0]
+    record[params[:confirm]] = true if record
+
+    begin
+      @msg = if record&.save
+               params[:msg] || 'Thanks! Your response has been recorded.'
+             else
+               'Sorry, something went wrong'
+             end
+    rescue Airrecord::Error => exception
+      @msg = exception
+    end
+  end
+
+  private
+
+  def load_table
+    @table = Airrecord.table(
+      ENV['AIRTABLE_API_KEY'],
+      ENV['AIRTABLE_APP_KEY'],
+      'Attendee sign-up data'
+    )
+  end
 end
